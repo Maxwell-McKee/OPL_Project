@@ -5,16 +5,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>e091c06d-133f-4e17-9550-b7f43bf6850f</ProjectGuid>
+    <ProjectGuid>8b5064f2-322a-4c4e-88d2-bc7df451ac41</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Demo_GUI</RootNamespace>
-    <AssemblyName>Demo_GUI</AssemblyName>
+    <RootNamespace>Waste_Calculator_GUI</RootNamespace>
+    <AssemblyName>Waste_Calculator_GUI</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFSharpCoreVersion>4.4.1.0</TargetFSharpCoreVersion>
-    <Name>Demo GUI</Name>
-    <Win32Resource>
-    </Win32Resource>
+    <Name>Waste Calculator GUI</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -60,6 +58,7 @@
     <Compile Include="Program.fs" />
     <None Include="App.config" />
     <Content Include="packages.config" />
+    <Compile Include="paper.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
