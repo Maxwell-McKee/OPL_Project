@@ -1,12 +1,18 @@
 ﻿module paper
 
-let napToTree napkins = napkins / 900.0
-let paperToReams paper = paper / 500.0
-let reamsToPaper reams = reams * 500.0
-let paperToTrees paper = (paper / 500.0) * 0.06
+let napToTree napkins = napkins / 900000.0
+let paperToTree paper = paper / 83000
+let reamsToTree reams = reams / 166
+let tpToTree tp_rolls = tp_rolls / 400000
+let towelToTree towls = towls / 200000
+let acresToTree acres = acres * 1000
 
-let treeToNap trees = trees * 900.0
-let treesToPaper trees = (trees / 0.06) * 500.0
+let treeToNap trees = trees * 900000.0
+let treeToPaper trees = trees * 83000
+let treeToReams trees = trees * 166
+let treeToTP trees = trees * 400000
+let treeToTowel trees = trees * 200000
+let treeToAcres trees = trees / 1000
 
 let paperToPaper func1 measure1 func2 = 
   func1 measure1 |> func2

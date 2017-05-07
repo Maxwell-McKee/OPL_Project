@@ -2,22 +2,7 @@
 open System.Drawing
 open System.Windows.Forms
 
-let napToTree napkins = napkins / 900000.0
-let paperToTree paper = paper / 83000
-let reamsToTree reams = reams / 166
-let tpToTree tp_rolls = tp_rolls / 400000
-let towelToTree towls = towls / 200000
-let acresToTree acres = acres * 1000
-
-let treeToNap trees = trees * 900000.0
-let treeToPaper trees = trees * 83000
-let treeToReams trees = trees * 166
-let treeToTP trees = trees * 400000
-let treeToTowel trees = trees * 200000
-let treeToAcres trees = trees / 1000
-
-let paperToPaper func1 measure1 func2 = 
-  func1 measure1 |> func2
+let tableFont = new Font(FontFamily.GenericSansSerif, 16.0f)
 
 let form = new Form()
 form.Visible <- true
@@ -62,35 +47,42 @@ submit.Font <- new Font(FontFamily.GenericSansSerif, 12.0f)
 submit.Height <- 30
 submit.Location <- new Point(750, 90)
 submit.BackColor <- Color.AliceBlue
+//submit.Click.Add(updateTable)
+
+let unitsLabel = new Label()
+unitsLabel.Text <- "Units"
+unitsLabel.Font <- tableFont
+unitsLabel.AutoSize <- true
 
 let papLabel = new Label() 
 papLabel.Text <- "Paper"
-papLabel.Font <- new Font(FontFamily.GenericSansSerif, 16.0f)
+papLabel.Font <- tableFont
 papLabel.AutoSize <- true
 
 let napLabel = new Label() 
 napLabel.Text <- "Napkins"
-napLabel.Font <- new Font(FontFamily.GenericSansSerif, 16.0f)
+napLabel.Font <- tableFont
 napLabel.AutoSize <- true
 
 let tpLabel = new Label() 
 tpLabel.Text <- "Toilet Paper"
-tpLabel.Font <- new Font(FontFamily.GenericSansSerif, 16.0f)
+tpLabel.Font <- tableFont
 tpLabel.AutoSize <- true
 
 let ptLabel = new Label() 
 ptLabel.Text <- "Paper Towel"
-ptLabel.Font <- new Font(FontFamily.GenericSansSerif, 16.0f)
+ptLabel.Font <- tableFont
 ptLabel.AutoSize <- true
 
 let pTable = new TableLayoutPanel()
 pTable.AutoSize <- true
 pTable.AutoSizeMode <- AutoSizeMode.GrowAndShrink
 pTable.Location <- new Point(50, 135)
-pTable.Controls.Add(papLabel, 0, 0)
-pTable.Controls.Add(napLabel, 0, 1)
-pTable.Controls.Add(tpLabel, 0, 2)
-pTable.Controls.Add(ptLabel, 0, 3)
+pTable.Controls.Add(unitsLabel, 0, 0)
+pTable.Controls.Add(papLabel, 0, 1)
+pTable.Controls.Add(napLabel, 0, 2)
+pTable.Controls.Add(tpLabel, 0, 3)
+pTable.Controls.Add(ptLabel, 0, 4)
 pTable.BorderStyle <- BorderStyle.FixedSingle
 pTable.CellBorderStyle <- TableLayoutPanelCellBorderStyle.Single
 pTable.BackColor <- Color.WhiteSmoke
