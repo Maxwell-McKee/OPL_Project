@@ -1,1 +1,11 @@
 C:\Users\Erik\Source\Repos\OPL_Project\Waste Calculator GUI\Waste Calculator GUI\obj\Debug\Waste Calculator GUI.fsprojResolveAssemblyReference.cache
+C:\Users\Max\Source\Repos\OPL_Project\Waste Calculator GUI\Waste Calculator GUI\bin\Debug\Waste_Calculator_GUI.exe.config
+C:\Users\Max\Source\Repos\OPL_Project\Waste Calculator GUI\Waste Calculator GUI\bin\Debug\Waste_Calculator_GUI.XML
+C:\Users\Max\Source\Repos\OPL_Project\Waste Calculator GUI\Waste Calculator GUI\bin\Debug\Waste_Calculator_GUI.exe
+C:\Users\Max\Source\Repos\OPL_Project\Waste Calculator GUI\Waste Calculator GUI\bin\Debug\Waste_Calculator_GUI.pdb
+C:\Users\Max\Source\Repos\OPL_Project\Waste Calculator GUI\Waste Calculator GUI\bin\Debug\FSharp.Core.dll
+C:\Users\Max\Source\Repos\OPL_Project\Waste Calculator GUI\Waste Calculator GUI\bin\Debug\System.ValueTuple.dll
+C:\Users\Max\Source\Repos\OPL_Project\Waste Calculator GUI\Waste Calculator GUI\bin\Debug\FSharp.Core.xml
+C:\Users\Max\Source\Repos\OPL_Project\Waste Calculator GUI\Waste Calculator GUI\obj\Debug\Waste Calculator GUI.fsprojResolveAssemblyReference.cache
+C:\Users\Max\Source\Repos\OPL_Project\Waste Calculator GUI\Waste Calculator GUI\obj\Debug\Waste_Calculator_GUI.exe
+C:\Users\Max\Source\Repos\OPL_Project\Waste Calculator GUI\Waste Calculator GUI\obj\Debug\Waste_Calculator_GUI.pdb
