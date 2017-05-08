@@ -8,7 +8,7 @@ let gallonsToSwimmingPools gallons = gallons / 30000.0
 let cupsToGallons cups = cups / 16.0
 let cupsToLiters cups =  gallonsToLiters(cupsToGallons cups)
 let cupsToBathtubs cups = gallonsToBathtubs(cupsToGallons cups)
-let cupsToSwimingPools cups =  gallonsToSwimmingPools(cupsToGallons cups)
+let cupsToSwimmingPools cups =  gallonsToSwimmingPools(cupsToGallons cups)
 
 let litersToGallons liters = liters / 3.75
 let litersToCups liters = gallonsToCups(litersToGallons liters) 
@@ -21,7 +21,7 @@ let bathtubsToLiters bathtubs = gallonsToLiters(bathtubsToGallons bathtubs)
 let bathtubsToSwimmingPools bathtubs =  gallonsToSwimmingPools(bathtubsToGallons bathtubs)
 
 let swimmingPoolsToGallons swimmingPools = swimmingPools * 30000.0
-let swimmingPoolssToCups swimmingPools = gallonsToCups(swimmingPoolsToGallons swimmingPools)
+let swimmingPoolsToCups swimmingPools = gallonsToCups(swimmingPoolsToGallons swimmingPools)
 let swimmingPoolssToLiters swimmingPools = gallonsToLiters(swimmingPoolsToGallons swimmingPools) 
 let swimmingPoolsToBathtubs swimmingPools = gallonsToBathtubs(swimmingPoolsToGallons swimmingPools)
 
