@@ -72,12 +72,10 @@ ptLabel.AutoSize <- true
 
 let piecesLabel = new Label()
 piecesLabel.Text <- "Pieces"
-piecesLabel.Width <- 200
 piecesLabel.Font <- tableFont
 
 let packLabel = new Label()
 packLabel.Text <- "Standard Packs"
-packLabel.Width <- 200
 packLabel.Font <- tableFont
 
 let treesLabel = new Label()
