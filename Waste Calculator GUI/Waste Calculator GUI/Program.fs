@@ -72,10 +72,12 @@ ptLabel.AutoSize <- true
 
 let piecesLabel = new Label()
 piecesLabel.Text <- "Pieces"
+piecesLabel.Width <- 200
 piecesLabel.Font <- tableFont
 
 let packLabel = new Label()
 packLabel.Text <- "Standard Packs"
+packLabel.Width <- 200
 packLabel.Font <- tableFont
 
 let treesLabel = new Label()
@@ -86,7 +88,7 @@ let acresLabel = new Label()
 acresLabel.Text <- "Acres of Plantation"
 acresLabel.Font <- tableFont
 
-let mutable papValue = new Label()
+let papValue = new Label()
 papValue.Font <- tableFont
 papValue.Text <- "0"
 papValue.AutoSize <- true
@@ -106,10 +108,25 @@ ptValue.Font <- tableFont
 ptValue.Text <- "0"
 ptValue.AutoSize <- true
 
+let papPack = new Label()
+papPack.Font <- tableFont
+papPack.Text <- "0"
+
+let napPack = new Label()
+napPack.Font <- tableFont
+napPack.Text <- "0"
+
+let tpPack = new Label()
+tpPack.Font <- tableFont
+tpPack.Text <- "0"
+
+let ptPack = new Label()
+ptPack.Font <- tableFont
+ptPack.Text <- "0"
 
 let pTable = new TableLayoutPanel()
 pTable.AutoSize <- true
-pTable.AutoSizeMode <- AutoSizeMode.GrowAndShrink
+pTable.AutoSizeMode <- AutoSizeMode.GrowOnly
 pTable.Location <- new Point(50, 135)
 pTable.Controls.Add(unitsLabel, 0, 0)
 pTable.Controls.Add(piecesLabel, 1, 0)
@@ -124,6 +141,10 @@ pTable.Controls.Add(papValue, 1, 1)
 pTable.Controls.Add(napValue, 1, 2)
 pTable.Controls.Add(tpValue, 1, 3)
 pTable.Controls.Add(ptValue, 1, 4)
+pTable.Controls.Add(papPack, 2, 1)
+pTable.Controls.Add(napPack, 2, 2)
+pTable.Controls.Add(tpPack, 2 , 3)
+pTable.Controls.Add(ptPack, 2, 4)
 pTable.BorderStyle <- BorderStyle.FixedSingle
 pTable.CellBorderStyle <- TableLayoutPanelCellBorderStyle.Single
 pTable.BackColor <- Color.WhiteSmoke
@@ -142,12 +163,16 @@ pSubmit.Font <- new Font(FontFamily.GenericSansSerif, 12.0f)
 pSubmit.Height <- 30
 pSubmit.Location <- new Point(750, 90)
 pSubmit.BackColor <- Color.AliceBlue
-pSubmit.Click.Add(fun _ -> trees <- treeValue (quantity.Text |> float)) 
+pSubmit.Click.Add(fun _ -> trees <- quantity.Text |> float |> treeValue) 
 pSubmit.Click.Add(fun _ -> printfn "Quantity: %s \n Trees: %f \n pBox: %s" quantity.Text trees pBox.Text)
 pSubmit.Click.Add(fun _ -> papValue.Text <- trees |> paper.treeToPaper |> string )
 pSubmit.Click.Add(fun _ -> napValue.Text <- trees |> paper.treeToNap |> string)
 pSubmit.Click.Add(fun _ -> tpValue.Text <- trees |> paper.treeToTP |> string)
 pSubmit.Click.Add(fun _ -> ptValue.Text <- trees |> paper.treeToTowel |> string)
+pSubmit.Click.Add(fun _ -> papPack.Text <- trees |> paper.treeToReams |> string )
+pSubmit.Click.Add(fun _ -> napPack.Text <- trees |> paper.treeToNapPack |> string)
+pSubmit.Click.Add(fun _ -> tpPack.Text <- trees |> paper.treeToTPPack |> string)
+pSubmit.Click.Add(fun _ -> ptPack.Text <- trees |> paper.treeToTowelPack |> string)
 pSubmit.Click.Add(fun _ -> printfn "Pap: %s \nNap: %s \ntp: %s \npt: %s \n" papValue.Text napValue.Text tpValue.Text ptValue.Text)
 pSubmit.Click.Add(fun _ -> form.Refresh())
 

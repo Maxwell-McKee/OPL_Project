@@ -9,10 +9,13 @@ let acresToTree acres = acres * 1000.0
 
 let treeToNap trees = trees * 900000.0
 let treeToPaper trees = trees * 83000.0
-let treeToReams trees = trees * 166.0
 let treeToTP trees = trees * 400000.0
 let treeToTowel trees = trees * 200000.0
 let treeToAcres trees = trees / 1000.0
+let treeToReams trees = trees * 166.0
+let treeToNapPack trees = trees * 4500.0
+let treeToTPPack trees = trees * 5000.0
+let treeToTowelPack trees = trees * 2500.0
 
 let paperToPaper func1 measure1 func2 = 
   func1 measure1 |> func2
