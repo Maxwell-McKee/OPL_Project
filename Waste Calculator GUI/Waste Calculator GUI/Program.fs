@@ -4,14 +4,17 @@ open System.Windows.Forms
 
 let tableFont = new Font(FontFamily.GenericSansSerif, 16.0f)
 
+// mutable value
 let mutable trees = 0.0
 
+// the screen for the program
 let form = new Form()
 form.Visible <- true
 form.Text <- "Waste Calculator"
 form.Size <- new Size(1000, 750)
 form.BackColor <- Color.ForestGreen
 
+// Labels for paper
 let pap = new Label()
 pap.Text <- "Paper"
 pap.Font <- new Font(FontFamily.GenericSansSerif, 26.0f)
@@ -24,6 +27,7 @@ mat.Font <- new Font(FontFamily.GenericSansSerif, 16.0f)
 mat.Width <- 100
 mat.Location <- new Point(50, 90)
 
+// Drop down selection for paper 
 let pBox = new ComboBox()
 pBox.Size <- new Size (200, 100)
 pBox.Location <- new Point(175, 90)
@@ -35,6 +39,7 @@ pBox.Items.Add "Paper Towel" |> ignore
 pBox.SelectedIndex <- 0
 pBox.DropDownStyle <- ComboBoxStyle.DropDownList
 
+// Labels and text boxes for paper
 let amt = new Label()
 amt.Text <- "Amount"
 amt.Font <- new Font(FontFamily.GenericSansSerif, 16.0f)
@@ -51,6 +56,7 @@ unitsLabel.Text <- "Units"
 unitsLabel.Font <- tableFont
 unitsLabel.AutoSize <- true
 
+// Labels for paper table
 let mutable papLabel = new Label() 
 papLabel.Text <- "Paper"
 papLabel.Font <- tableFont
@@ -90,6 +96,7 @@ acresLabel.Text <- "Acres of Plantation"
 acresLabel.Width <- 200
 acresLabel.Font <- tableFont
 
+// Values for paper table
 let papValue = new Label()
 papValue.Font <- tableFont
 papValue.Text <- "0"
@@ -166,12 +173,14 @@ acreCount4.Font <- tableFont
 acreCount4.Text <- "0"
 acreCount4.AutoSize <- true
 
+// index for enviornmentally friendly rating
 let paperIndex = new Label()
 paperIndex.Font <- tableFont
 paperIndex.Text <- "Green index, paper: "
 paperIndex.AutoSize <- true
 paperIndex.Location <- new Point (30, 310)
 
+// paper table
 let pTable = new TableLayoutPanel()
 pTable.AutoSize <- true
 pTable.AutoSizeMode <- AutoSizeMode.GrowAndShrink
@@ -216,6 +225,7 @@ pTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30.0f)) |> ignore
 pTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30.0f)) |> ignore
 pTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30.0f)) |> ignore
 
+// base conversion for paper
 let treeValue quantity = 
     match pBox.Text with
     | "Paper" -> quantity |> paper.paperToTree 
@@ -224,12 +234,14 @@ let treeValue quantity =
     | "Paper Towel" -> quantity |> paper.towelToTree 
     | _ -> 1.0
 
+// Rating on paper usage
 let pGreenIndex _=
     if trees < 0.5 then "Good"
     elif trees < 1.0 then "OK"
     elif trees < 10.0 then "Bad"
     else "What are you doing?"
 
+// conversions for paper table
 let pSubmit = new Button()
 pSubmit.Text <- "Submit"
 pSubmit.Font <- new Font(FontFamily.GenericSansSerif, 12.0f)
@@ -267,8 +279,10 @@ form.Controls.Add pSubmit
 form.Controls.Add pTable
 form.Controls.Add paperIndex
 
+// mutable value
 let mutable cups = 0.0
 
+// labels for water 
 let unit = new Label()
 unit.Text <- "Unit"
 unit.Font <- new Font(FontFamily.GenericSansSerif, 16.0f)
@@ -281,6 +295,7 @@ wat.Font <- new Font(FontFamily.GenericSansSerif, 26.0f)
 wat.Size <- new Size(150, 100)
 wat.Location <- new Point(25, 370)
 
+// water drop down box 
 let wBox = new ComboBox()
 wBox.Size <- new Size (200, 100)
 wBox.Location <- new Point(175, 425)
@@ -293,6 +308,7 @@ wBox.Items.Add "Swimming Pools" |> ignore
 wBox.SelectedIndex <- 0
 wBox.DropDownStyle <- ComboBoxStyle.DropDownList
 
+// Lables and textboxes for water
 let amt2 = new Label()
 amt2.Text <- "Amount"
 amt2.Font <- new Font(FontFamily.GenericSansSerif, 16.0f)
@@ -309,6 +325,7 @@ unitsLabel2.Text <- "Units"
 unitsLabel2.Font <- tableFont
 unitsLabel2.AutoSize <- true
 
+// water table labels
 let mutable cupLabel = new Label() 
 cupLabel.Text <- "Cups"
 cupLabel.Font <- tableFont
@@ -334,6 +351,7 @@ poolLabel.Text <- "Swimming Pools"
 poolLabel.Font <- tableFont
 poolLabel.AutoSize <- true
 
+// water values
 let cupValue = new Label()
 cupValue.Font <- tableFont
 cupValue.Text <- "0"
@@ -359,6 +377,7 @@ poolValue.Font <- tableFont
 poolValue.Text <- "0"
 poolValue.AutoSize <- true
 
+// cups base conversion
 let cupsValue quantity2 = 
     match wBox.Text with
     | "Cups" -> quantity2 |> water.cupsToCups
@@ -368,9 +387,9 @@ let cupsValue quantity2 =
     | "Swimming Pools" -> quantity2 |> water.swimmingPoolsToCups 
     | _ -> 1.0
 
+// water table
 let wTable = new TableLayoutPanel()
 wTable.AutoSize <- false
-//wTable.AutoSizeMode <- AutoSizeMode.GrowOnly
 wTable.Size <- new Size(940, 65)
 wTable.Location <- new Point(30, 500)
 wTable.Controls.Add(unitsLabel2, 0, 0)
@@ -395,6 +414,7 @@ wTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150.0f)) |> ignore
 wTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30.0f)) |> ignore
 wTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30.0f)) |> ignore
 
+// conversions for water table
 let wSubmit = new Button()
 wSubmit.Text <- "Submit"
 wSubmit.Font <- new Font(FontFamily.GenericSansSerif, 12.0f)
@@ -410,7 +430,6 @@ wSubmit.Click.Add(fun _ -> bathValue.Text <- System.Math.Round(cups |> water.cup
 wSubmit.Click.Add(fun _ -> poolValue.Text <- System.Math.Round(cups |> water.cupsToSwimmingPools, 3) |> string)
 wSubmit.Click.Add(fun _ -> printfn "cup %s \ngal: %s \nlit: %s \nbath: %s \npool: %s \n" cupValue.Text galValue.Text litValue.Text bathValue.Text poolValue.Text)
 wSubmit.Click.Add(fun _ -> form.Refresh())
-
 
 form.Controls.Add unit
 form.Controls.Add wBox
