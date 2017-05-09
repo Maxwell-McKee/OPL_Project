@@ -245,14 +245,14 @@ pSubmit.Click.Add(fun _ -> papPack.Text <- System.Math.Round(trees |> paper.tree
 pSubmit.Click.Add(fun _ -> napPack.Text <- System.Math.Round(trees |> paper.treeToNapPack, 3) |> string)
 pSubmit.Click.Add(fun _ -> tpPack.Text <- System.Math.Round(trees |> paper.treeToTPPack, 3) |> string)
 pSubmit.Click.Add(fun _ -> ptPack.Text <- System.Math.Round(trees |> paper.treeToTowelPack, 3) |> string)
-pSubmit.Click.Add(fun _ -> treeCount1.Text <- trees |> string)
-pSubmit.Click.Add(fun _ -> treeCount2.Text <- trees |> string)
-pSubmit.Click.Add(fun _ -> treeCount3.Text <- trees |> string)
-pSubmit.Click.Add(fun _ -> treeCount4.Text <- trees |> string)
-pSubmit.Click.Add(fun _ -> acreCount1.Text <- trees |> paper.treeToAcres |> string)
-pSubmit.Click.Add(fun _ -> acreCount2.Text <- trees |> paper.treeToAcres |> string)
-pSubmit.Click.Add(fun _ -> acreCount3.Text <- trees |> paper.treeToAcres |> string)
-pSubmit.Click.Add(fun _ -> acreCount4.Text <- trees |> paper.treeToAcres |> string)
+pSubmit.Click.Add(fun _ -> treeCount1.Text <- System.Math.Round(trees, 9) |> string)
+pSubmit.Click.Add(fun _ -> treeCount2.Text <- System.Math.Round(trees, 9) |> string)
+pSubmit.Click.Add(fun _ -> treeCount3.Text <- System.Math.Round(trees, 9) |> string)
+pSubmit.Click.Add(fun _ -> treeCount4.Text <- System.Math.Round(trees, 9) |> string)
+pSubmit.Click.Add(fun _ -> acreCount1.Text <- System.Math.Round(trees |> paper.treeToAcres, 9) |> string)
+pSubmit.Click.Add(fun _ -> acreCount2.Text <- System.Math.Round(trees |> paper.treeToAcres, 9) |> string)
+pSubmit.Click.Add(fun _ -> acreCount3.Text <- System.Math.Round(trees |> paper.treeToAcres, 9) |> string)
+pSubmit.Click.Add(fun _ -> acreCount4.Text <- System.Math.Round(trees |> paper.treeToAcres, 9) |> string)
 pSubmit.Click.Add(fun _ -> paperIndex.Text <- "Green index, paper: " + (pGreenIndex 0))
 pSubmit.Click.Add(fun _ -> printfn "Pap: %s \nNap: %s \ntp: %s \npt: %s \n" papValue.Text napValue.Text tpValue.Text ptValue.Text)
 pSubmit.Click.Add(fun _ -> form.Refresh())
@@ -272,35 +272,35 @@ let unit = new Label()
 unit.Text <- "Unit"
 unit.Font <- new Font(FontFamily.GenericSansSerif, 16.0f)
 unit.Width <- 100
-unit.Location <- new Point(70, 408)
+unit.Location <- new Point(70, 428)
 
 let wat = new Label()
 wat.Text <- "Water"
 wat.Font <- new Font(FontFamily.GenericSansSerif, 26.0f)
 wat.Size <- new Size(150, 100)
-wat.Location <- new Point(25, 350)
+wat.Location <- new Point(25, 370)
 
 let wBox = new ComboBox()
 wBox.Size <- new Size (200, 100)
-wBox.Location <- new Point(175, 405)
+wBox.Location <- new Point(175, 425)
 wBox.Font <- new Font(FontFamily.GenericSansSerif, 15.0f)
 wBox.Items.Add "Cups" |> ignore
 wBox.Items.Add "Gallons" |> ignore
 wBox.Items.Add "Liters" |> ignore
 wBox.Items.Add "Bathtubs" |> ignore
-wBox.Items.Add "SwimmingPools" |> ignore
+wBox.Items.Add "Swimming Pools" |> ignore
 wBox.SelectedText <- "Cups"
 
 let amt2 = new Label()
 amt2.Text <- "Amount"
 amt2.Font <- new Font(FontFamily.GenericSansSerif, 16.0f)
 amt2.Width <- 100
-amt2.Location <- new Point(450, 408)
+amt2.Location <- new Point(450, 428)
 
 let mutable quantity2 = new TextBox()
 quantity2.Font <- new Font(FontFamily.GenericSansSerif, 14.0f)
 quantity2.Size <- new Size(200, 100)
-quantity2.Location <- new Point(550, 405)
+quantity2.Location <- new Point(550, 425)
 
 let unitsLabel2 = new Label()
 unitsLabel2.Text <- "Units"
@@ -369,8 +369,8 @@ let cupsValue quantity2 =
 let wTable = new TableLayoutPanel()
 wTable.AutoSize <- false
 //wTable.AutoSizeMode <- AutoSizeMode.GrowOnly
-wTable.Size <- new Size(940, 100)
-wTable.Location <- new Point(30, 480)
+wTable.Size <- new Size(940, 65)
+wTable.Location <- new Point(30, 500)
 wTable.Controls.Add(unitsLabel2, 0, 0)
 wTable.Controls.Add(cupLabel, 1, 0)
 wTable.Controls.Add(galLabel, 2, 0)
@@ -397,7 +397,7 @@ let wSubmit = new Button()
 wSubmit.Text <- "Submit"
 wSubmit.Font <- new Font(FontFamily.GenericSansSerif, 12.0f)
 wSubmit.Height <- 30
-wSubmit.Location <- new Point(750, 405)
+wSubmit.Location <- new Point(750, 425)
 wSubmit.BackColor <- Color.AliceBlue
 wSubmit.Click.Add(fun _ -> cups <- quantity2.Text |> float |> cupsValue) 
 wSubmit.Click.Add(fun _ -> printfn "Quantity: %s \n Cups: %f \n wBox: %s" quantity.Text cups wBox.Text)
