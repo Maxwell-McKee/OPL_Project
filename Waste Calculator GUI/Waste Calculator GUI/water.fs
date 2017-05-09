@@ -5,6 +5,7 @@ let gallonsToLiters gallons = gallons * 3.75
 let gallonsToBathtubs gallons = gallons / 110.0 
 let gallonsToSwimmingPools gallons = gallons / 30000.0
 
+let cupsToCups cups = cups
 let cupsToGallons cups = cups / 16.0
 let cupsToLiters cups =  gallonsToLiters(cupsToGallons cups)
 let cupsToBathtubs cups = gallonsToBathtubs(cupsToGallons cups)

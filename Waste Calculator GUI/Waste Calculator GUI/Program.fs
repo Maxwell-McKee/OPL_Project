@@ -266,7 +266,7 @@ form.Controls.Add pSubmit
 form.Controls.Add pTable
 form.Controls.Add paperIndex
 
-//let mutable cups = 0.0
+let mutable cups = 0.0
 
 let unit = new Label()
 unit.Text <- "Unit"
@@ -359,6 +359,7 @@ poolValue.AutoSize <- true
 
 let cupsValue quantity2 = 
     match wBox.Text with
+    | "Cups" -> quantity2 |> water.cupsToCups
     | "Gallons" -> quantity2 |> water.gallonsToCups 
     | "Liters" -> quantity2 |> water.litersToCups 
     | "Bathtubs" -> quantity2 |> water.bathtubsToCups 
@@ -366,9 +367,10 @@ let cupsValue quantity2 =
     | _ -> 1.0
 
 let wTable = new TableLayoutPanel()
-wTable.AutoSize <- true
-wTable.AutoSizeMode <- AutoSizeMode.GrowOnly
-wTable.Location <- new Point(50, 480)
+wTable.AutoSize <- false
+//wTable.AutoSizeMode <- AutoSizeMode.GrowOnly
+wTable.Size <- new Size(940, 100)
+wTable.Location <- new Point(30, 480)
 wTable.Controls.Add(unitsLabel2, 0, 0)
 wTable.Controls.Add(cupLabel, 1, 0)
 wTable.Controls.Add(galLabel, 2, 0)
@@ -383,31 +385,37 @@ wTable.Controls.Add(poolValue, 5, 1)
 wTable.BorderStyle <- BorderStyle.FixedSingle
 wTable.CellBorderStyle <- TableLayoutPanelCellBorderStyle.Single
 wTable.BackColor <- Color.WhiteSmoke
+wTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150.0f)) |> ignore
+wTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150.0f)) |> ignore
+wTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150.0f)) |> ignore
+wTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150.0f)) |> ignore
+wTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150.0f)) |> ignore
+wTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30.0f)) |> ignore
+wTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30.0f)) |> ignore
 
-
-(*
 let wSubmit = new Button()
 wSubmit.Text <- "Submit"
 wSubmit.Font <- new Font(FontFamily.GenericSansSerif, 12.0f)
 wSubmit.Height <- 30
-wSubmit.Location <- new Point(750, 375)
+wSubmit.Location <- new Point(750, 405)
 wSubmit.BackColor <- Color.AliceBlue
-wSubmit.Click.Add(fun _ -> cups <- quantity2.Text |> float |> treeValue) 
+wSubmit.Click.Add(fun _ -> cups <- quantity2.Text |> float |> cupsValue) 
 wSubmit.Click.Add(fun _ -> printfn "Quantity: %s \n Cups: %f \n wBox: %s" quantity.Text cups wBox.Text)
-wSubmit.Click.Add(fun _ -> papValue.Text <- cups |> water.cupsToGallons |> string )
-wSubmit.Click.Add(fun _ -> napValue.Text <- cups |> water.cupsToLiters |> string)
-wSubmit.Click.Add(fun _ -> tpValue.Text <- cups |> water.cupsToBathtubs |> string)
-wSubmit.Click.Add(fun _ -> ptValue.Text <- cups |> water.cupsToSwimmingPools |> string)
-//wSubmit.Click.Add(fun _ -> printfn "Pap: %s \nNap: %s \ntp: %s \npt: %s \n" cupValue.Text galValue.Text litValue.Text bathValue.Text poolValue.Text)
+wSubmit.Click.Add(fun _ -> cupValue.Text <- System.Math.Round(cups |> water.cupsToCups, 3) |> string)
+wSubmit.Click.Add(fun _ -> galValue.Text <- System.Math.Round(cups |> water.cupsToGallons, 3) |> string)
+wSubmit.Click.Add(fun _ -> litValue.Text <- System.Math.Round(cups |> water.cupsToLiters, 3) |> string)
+wSubmit.Click.Add(fun _ -> bathValue.Text <- System.Math.Round(cups |> water.cupsToBathtubs, 3) |> string)
+wSubmit.Click.Add(fun _ -> poolValue.Text <- System.Math.Round(cups |> water.cupsToSwimmingPools, 3) |> string)
+wSubmit.Click.Add(fun _ -> printfn "cup %s \ngal: %s \nlit: %s \nbath: %s \npool: %s \n" cupValue.Text galValue.Text litValue.Text bathValue.Text poolValue.Text)
 wSubmit.Click.Add(fun _ -> form.Refresh())
-*)
+
 
 form.Controls.Add unit
 form.Controls.Add wBox
 form.Controls.Add amt2
 form.Controls.Add wat
 form.Controls.Add quantity2
-//form.Controls.Add wSubmit
+form.Controls.Add wSubmit
 form.Controls.Add wTable
 
 
