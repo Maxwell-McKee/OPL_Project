@@ -32,7 +32,8 @@ pBox.Items.Add "Paper" |> ignore
 pBox.Items.Add "Napkins" |> ignore
 pBox.Items.Add "Toilet Paper" |> ignore
 pBox.Items.Add "Paper Towel" |> ignore
-pBox.SelectedText <- "Paper"
+pBox.SelectedIndex <- 0
+pBox.DropDownStyle <- ComboBoxStyle.DropDownList
 
 let amt = new Label()
 amt.Text <- "Amount"
@@ -40,7 +41,7 @@ amt.Font <- new Font(FontFamily.GenericSansSerif, 16.0f)
 amt.Width <- 100
 amt.Location <- new Point(450, 90)
 
-let mutable quantity = new TextBox()
+let quantity = new TextBox()
 quantity.Font <- new Font(FontFamily.GenericSansSerif, 14.0f)
 quantity.Size <- new Size(200, 100)
 quantity.Location <- new Point(550, 90)
@@ -289,7 +290,8 @@ wBox.Items.Add "Gallons" |> ignore
 wBox.Items.Add "Liters" |> ignore
 wBox.Items.Add "Bathtubs" |> ignore
 wBox.Items.Add "Swimming Pools" |> ignore
-wBox.SelectedText <- "Cups"
+wBox.SelectedIndex <- 0
+wBox.DropDownStyle <- ComboBoxStyle.DropDownList
 
 let amt2 = new Label()
 amt2.Text <- "Amount"
