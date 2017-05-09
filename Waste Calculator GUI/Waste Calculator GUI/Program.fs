@@ -169,6 +169,7 @@ let paperIndex = new Label()
 paperIndex.Font <- tableFont
 paperIndex.Text <- "Green index, paper: "
 paperIndex.AutoSize <- true
+paperIndex.Location <- new Point (30, 310)
 
 let pTable = new TableLayoutPanel()
 pTable.AutoSize <- true
@@ -208,6 +209,11 @@ pTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100.0f)) |> ignore
 pTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 175.0f)) |> ignore
 pTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 250.0f)) |> ignore
 pTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 250.0f)) |> ignore
+pTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30.0f)) |> ignore
+pTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30.0f)) |> ignore
+pTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30.0f)) |> ignore
+pTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30.0f)) |> ignore
+pTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30.0f)) |> ignore
 
 let treeValue quantity = 
     match pBox.Text with
@@ -217,12 +223,11 @@ let treeValue quantity =
     | "Paper Towel" -> quantity |> paper.towelToTree 
     | _ -> 1.0
 
-let pGreenIndex =
-    match trees with
-    | 0.5 when trees < 0.5 -> "Good"
-    | 1.0 when trees < 1.0 -> "OK"
-    | 1000.0 when trees < 1000.0 -> "Bad"
-    | _ -> "What are you doing?"
+let pGreenIndex _=
+    if trees < 0.5 then "Good"
+    elif trees < 1.0 then "OK"
+    elif trees < 10.0 then "Bad"
+    else "What are you doing?"
 
 let pSubmit = new Button()
 pSubmit.Text <- "Submit"
@@ -248,6 +253,7 @@ pSubmit.Click.Add(fun _ -> acreCount1.Text <- trees |> paper.treeToAcres |> stri
 pSubmit.Click.Add(fun _ -> acreCount2.Text <- trees |> paper.treeToAcres |> string)
 pSubmit.Click.Add(fun _ -> acreCount3.Text <- trees |> paper.treeToAcres |> string)
 pSubmit.Click.Add(fun _ -> acreCount4.Text <- trees |> paper.treeToAcres |> string)
+pSubmit.Click.Add(fun _ -> paperIndex.Text <- "Green index, paper: " + (pGreenIndex 0))
 pSubmit.Click.Add(fun _ -> printfn "Pap: %s \nNap: %s \ntp: %s \npt: %s \n" papValue.Text napValue.Text tpValue.Text ptValue.Text)
 pSubmit.Click.Add(fun _ -> form.Refresh())
 
@@ -258,6 +264,7 @@ form.Controls.Add pap
 form.Controls.Add quantity
 form.Controls.Add pSubmit
 form.Controls.Add pTable
+form.Controls.Add paperIndex
 
 //let mutable cups = 0.0
 
@@ -265,17 +272,17 @@ let unit = new Label()
 unit.Text <- "Unit"
 unit.Font <- new Font(FontFamily.GenericSansSerif, 16.0f)
 unit.Width <- 100
-unit.Location <- new Point(70, 378)
+unit.Location <- new Point(70, 408)
 
 let wat = new Label()
 wat.Text <- "Water"
 wat.Font <- new Font(FontFamily.GenericSansSerif, 26.0f)
 wat.Size <- new Size(150, 100)
-wat.Location <- new Point(25, 320)
+wat.Location <- new Point(25, 350)
 
 let wBox = new ComboBox()
 wBox.Size <- new Size (200, 100)
-wBox.Location <- new Point(175, 375)
+wBox.Location <- new Point(175, 405)
 wBox.Font <- new Font(FontFamily.GenericSansSerif, 15.0f)
 wBox.Items.Add "Cups" |> ignore
 wBox.Items.Add "Gallons" |> ignore
@@ -288,12 +295,12 @@ let amt2 = new Label()
 amt2.Text <- "Amount"
 amt2.Font <- new Font(FontFamily.GenericSansSerif, 16.0f)
 amt2.Width <- 100
-amt2.Location <- new Point(450, 378)
+amt2.Location <- new Point(450, 408)
 
 let mutable quantity2 = new TextBox()
 quantity2.Font <- new Font(FontFamily.GenericSansSerif, 14.0f)
 quantity2.Size <- new Size(200, 100)
-quantity2.Location <- new Point(550, 375)
+quantity2.Location <- new Point(550, 405)
 
 let unitsLabel2 = new Label()
 unitsLabel2.Text <- "Units"
@@ -361,7 +368,7 @@ let cupsValue quantity2 =
 let wTable = new TableLayoutPanel()
 wTable.AutoSize <- true
 wTable.AutoSizeMode <- AutoSizeMode.GrowOnly
-wTable.Location <- new Point(50, 450)
+wTable.Location <- new Point(50, 480)
 wTable.Controls.Add(unitsLabel2, 0, 0)
 wTable.Controls.Add(cupLabel, 1, 0)
 wTable.Controls.Add(galLabel, 2, 0)
