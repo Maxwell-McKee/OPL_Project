@@ -13,5 +13,7 @@ https://fsharpforfunandprofit.com/
 
 # Running Code
 Code was compiled and written Visual Studio 2017
+
 All source code under the "Waste Calculator GUI\Waste Calculator GUI" folder
+
 Stable release under the "Waste Calculator GUI\Waste Calculator GUI\bin\Debug" folder as .exe file
